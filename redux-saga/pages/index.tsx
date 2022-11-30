@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { reset, selectUser, setUser } from "../store/slices/user-slice";
+import { asyncSetUser, reset, selectUser, setUser } from "slices/user-slice";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ export default function Home() {
         The current user is {user.username} and has the {user.id} id
       </p>
       <button onClick={() => dispatch(reset())}>Reset state</button>
+      <button onClick={() => dispatch(asyncSetUser())}>Set user async with a saga</button>
     </>
   );
 }

@@ -22,13 +22,16 @@ const userSlice = createSlice({
       state.username = action.payload.username;
       state.id = action.payload.id;
     },
+    asyncSetUser(state) {
+      return state;
+    },
     reset() {
       return initialState;
     },
   },
 });
 
-export const { setUser, reset } = userSlice.actions;
+export const { setUser, asyncSetUser, reset } = userSlice.actions;
 export function selectUser(state: { user: UserState }) {
   return state.user;
 }
