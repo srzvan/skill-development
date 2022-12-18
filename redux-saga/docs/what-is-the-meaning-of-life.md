@@ -10,6 +10,7 @@ O alternativă este [_Redux thunks_](https://redux.js.org/usage/writing-logic-th
 
 - Care sunt beneficiile pe care le aduce _Redux Saga_?
 - Ce este un `middleware`?
+  - Un `middleware` este o funcție de ordin superior care compune funcția `dispatch` cu scopul de a augmenta comportamentul acesteia din urmă.
 - Ce reprezintă `stack frame`-ul?
 - Ce înseamnă `current stack frame`?
 - Ce este un _watcher saga_?
