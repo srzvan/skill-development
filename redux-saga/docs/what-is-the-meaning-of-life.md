@@ -8,13 +8,16 @@
 
 O alternativă este [_Redux thunks_](https://redux.js.org/usage/writing-logic-thunks).
 
-- Care sunt beneficiile pe care le aduce _Redux Saga_?
+- ## Care sunt beneficiile pe care le aduce _Redux Saga_?
 - Ce este un `middleware`?
   - Un `middleware` este o funcție de ordin superior care compune funcția `dispatch` cu scopul de a augmenta comportamentul acesteia din urmă.
 - Ce reprezintă `stack frame`-ul?
 - Ce înseamnă `current stack frame`?
-- Ce este un _watcher saga_?
-  - Un _watcher saga_ este o funcție generator a cărei responsabilitate este să execute funcții de tip _saga_ (numite și _handlers_)atunci când interceptează `actions` de un anumit tip.
+- Ce este modelul _watcher/worker saga_?
+  - Acest model reprezintă un mod de organizare a fluxului de control și este bazat pe două tipuri de funcții saga:
+    - _Watcher_ - creează câte un _task_ ce rulează un _worker_ (numit și _handler_) de fiecare dată când interceptează o _acțiune_ de un anumit tip
+    - _Worker_ - interpretează acțiunea respectivă și își termină execuția
+- ## Ce este un _watcher saga_?
 - Ce este un _saga_?
 
 ## The how
