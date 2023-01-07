@@ -31,11 +31,13 @@ O alternativă este [_thunks_](https://redux.js.org/usage/writing-logic-thunks).
 
 - Ce este un _side effect_?
 
-  - Un _side effect_ reprezintă orice schimbare a stării sau comportamentului care poate fi observat în afara contextului execuției unei funcții. Câteva exemple sunt: afișarea unei valori în consolă, salvarea unui fișier, pornirea unui timer asincron, modificarea unei stări care există înafara contextului unei funcții sau mutația argumentelor funcției, execuția unui request AJAX HTTP, generarea valorilor aleatorii
+  - Un _side effect_ reprezintă orice schimbare a stării sau comportamentului aplicației ce poate fi observat în afara contextului execuției unei funcții. Câteva exemple sunt: afișarea unei valori în consolă, salvarea unui fișier, pornirea unui timer asincron, modificarea unei stări care există înafara contextului unei funcții sau mutația argumentelor funcției, execuția unui request AJAX HTTP, generarea unei valori aleatorii
 
 - Ce este un `middleware`?
 
-  - Un `middleware` reprezintă un modul ce facilititează execuția codului într-o fereastră de timp plasată **după** ce o _acțiune_ a fost emisă către _store_, dar **înainte** ca aceasta să ajungă la o funcție de tip _reducer_, să fie procesată și starea să fie actualizată. Implementarea este realizată printr-o funcție de ordin superior care compune funcția `dispatch` cu scopul de a augmenta comportamentul acesteia din urmă. Use-case-urile principale sunt: centralizarea comportamentului aplicației (e.g. logging, analytics) și posibilitatea de a introduce logică de tip asincron în `store` într-un mod flexibil (control asupra sintaxei și API-urilor folosite).
+  - Un `middleware` reprezintă un modul ce facilititează execuția codului într-o fereastră de timp plasată **după** ce o _acțiune_ a fost emisă către _store_, dar **înainte** ca aceasta să ajungă la o funcție de tip _reducer_, să fie procesată și starea să fie actualizată. Implementarea este realizată printr-o funcție de ordin superior care compune funcția `dispatch` cu scopul de a augmenta comportamentul acesteia din urmă. Use-case-urile principale sunt:
+    - centralizarea comportamentului aplicației (e.g. logging, analytics)
+    - posibilitatea de a introduce logică de tip asincron în `store` într-un mod flexibil (control asupra sintaxei și API-urilor folosite).
 
 - Ce este modelul _watcher/worker saga_?
   - Acest model reprezintă un mod de organizare a fluxului de control și este bazat pe două tipuri de funcții saga:

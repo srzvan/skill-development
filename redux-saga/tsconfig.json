@@ -18,7 +18,8 @@
       "store": ["./store/index.ts"],
       "sagas": ["./store/sagas/index.ts"],
       "sagas/*": ["./store/sagas/*"],
-      "slices/*": ["./store/slices/*"]
+      "slices/*": ["./store/slices/*"],
+      "styles/*": ["./styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

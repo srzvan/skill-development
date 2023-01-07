@@ -1,0 +1,46 @@
+html,
+body {
+  min-height: 100vh;
+}
+
+#__next {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding-inline: 2rem;
+}
+
+header,
+footer {
+  padding-block: 1.5rem;
+}
+
+header {
+  border-bottom: 1px solid darkslategrey;
+}
+
+main {
+  padding-block: 2rem;
+}
+
+footer {
+  border-top: 1px solid darkslategrey;
+  text-align: center;
+}
+
+figure:has(> blockquote) {
+  background-color: darksalmon;
+  padding: 1.25rem 1.75rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+figure > blockquote {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+figure > figcaption {
+  font-size: 1.125rem;
+}
