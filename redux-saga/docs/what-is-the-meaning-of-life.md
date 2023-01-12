@@ -8,26 +8,65 @@
 
 O regulă prezentă în documentația Redux menționeză că funcțiile de tip _reducer_ nu trebuie să conțină _side effects_. Astfel, nevoia unui layer unde poate exista cod care produce _side effects_ devine evidentă.
 
-O alternativă este [_thunks_](https://redux.js.org/usage/writing-logic-thunks).
+Posibile alternative sunt
 
-- Care sunt beneficiile pe care le aduce _Redux Saga_?
+- [_thunks_](https://redux.js.org/usage/writing-logic-thunks).
+- [_observable_](https://redux-observable.js.org/)
 
-  - High testability
-    - Dat fiind faptul că fiecare _saga_ emite obiecte de tip `effect` ce conțin instrucțiuni ce trebuie executate de către `middleware`-ul asociat, testele pentru acest tip de funcții este ușor de implementat
-  -
+### Use cases
+
+#### Redux Saga
+
+Se pretează pentru logică asincronă de complexitate ridicată
+
+- "background thread"-type behavior
+- debouncing/cancelling
+
+#### Redux Thunk
+
+Se pretează pentru logică
+
+- complexă sincronă ce necesită access la _stare_
+- de complexitate medie asincronă (e.g. `fetch` data & `dispatch` result)
 
 #### Tradeoffs
 
+##### Redux Saga
+
+- the good
+
+  - High testability
+    - Dat fiind faptul că fiecare _saga_ emite obiecte de tip `effect` ce conțin instrucțiuni ce trebuie executate de către `middleware`-ul asociat, testele pentru acest tip de funcții este ușor de implementat
+  - Modelul bazat pe `effects` facilitează implementarea unor comportamente precum
+    - "background thread"
+    - pausing/cancelling/debouncing _sagas_
+
+- the bad
 - Complexitate ridicată
   - Funcțiile de tip generator sunt un concept avansat al limbajului JavaScript iar implementarea _saga_-urilor necesită înțelegerea acestuia
 - Performanță
   - Depinzând de use case, perfomanța poate fi afectată de modul în care funcționează funcțiile de tip generator ([some insight](https://stackoverflow.com/a/70672133/9080110))
-- Steep learning curve
+- Steep learning curve (unique saga effects API)
   - Înțelegerea și folosirea API-ului librăriei într-un mod eficient poate necesita o perioadă de timp mai mare comparativ cu alternativele (e.g. _redux thunk_)
 - Bundle size - 27-Dec-2022
 
   - [`redux-saga` bundlephobia report](https://bundlephobia.com/package/redux-saga@1.2.2)
   - [`redux-thunk` bundlephobia report](https://bundlephobia.com/package/redux-thunk@2.4.2)
+  - [`redux-observable` bundlephobia report](https://bundlephobia.com/package/redux-observable@2.0.0)
+
+##### Redux Thunk
+
+- the good
+
+  - Complexitate moderată, presupunerea creearea unor funcții
+  - Facilitează pasarea funcțiilor de tip _thunk_ ca parametru pentru `dispatch`
+  - Respectivele funcții pot conține orice fel de logică
+
+- the bad
+
+  - Nu esete posibil să reacționeze la acțiuni
+  - Cod imperativ
+  - Nu pot fi anulate deoarece sunt funcții simple ce se execută după modelul _run-to-completion_
 
 - Ce este un _side effect_?
 
@@ -38,6 +77,7 @@ O alternativă este [_thunks_](https://redux.js.org/usage/writing-logic-thunks).
   - Un `middleware` reprezintă un modul ce facilititează execuția codului într-o fereastră de timp plasată **după** ce o _acțiune_ a fost emisă către _store_, dar **înainte** ca aceasta să ajungă la o funcție de tip _reducer_, să fie procesată și starea să fie actualizată. Implementarea este realizată printr-o funcție de ordin superior care compune funcția `dispatch` cu scopul de a augmenta comportamentul acesteia din urmă. Use-case-urile principale sunt:
     - centralizarea comportamentului aplicației (e.g. logging, analytics)
     - posibilitatea de a introduce logică de tip asincron în `store` într-un mod flexibil (control asupra sintaxei și API-urilor folosite).
+  - Se poate spune că un `middleware` facilitează pentru funcția `dispatch` o cale pentru a procesa valori diferite de modelul _action_ sau că transformă valori nonconforme în `actions` simple
 
 - Ce este modelul _watcher/worker saga_?
   - Acest model reprezintă un mod de organizare a fluxului de control și este bazat pe două tipuri de funcții saga:
