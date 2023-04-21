@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "npx tsc is-adult.ts && node is-adult.js"
+  },
   "devDependencies": {
     "typescript": "^5.0.3"
   }
