@@ -62,3 +62,5 @@ if (["production", "staging"].includes(process.env.NODE_ENV)) {
   // ...
 }
 ```
+
+Node.js has WebAssembly support through the `WebAssembly` global variable.

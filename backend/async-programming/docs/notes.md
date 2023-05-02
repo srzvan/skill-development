@@ -12,4 +12,4 @@
 
 The term **settled** can be used to cover both fulfilled and rejected.
 
-Note that what "succeeded" or "failed" means here is up to the API in question: for example, `fetch()` considers a request successful if the server returned an error like **404 Not Found**, but not if a network error prevented the request being sent.
+Another used term that's slightly confusing is **resolve(d)**. [This article](https://thenewtoys.dev/blog/2021/02/08/lets-talk-about-how-to-talk-about-promises/) explains the terminology taking this term into account.
