@@ -12,4 +12,15 @@
 
 The term **settled** can be used to cover both fulfilled and rejected.
 
-Another used term that's slightly confusing is **resolve(d)**. [This article](https://thenewtoys.dev/blog/2021/02/08/lets-talk-about-how-to-talk-about-promises/) explains the terminology taking this term into account.
+Another used term that's slightly confusing is **resolve(d)**. [This article](https://thenewtoys.dev/blog/2021/02/08/lets-talk-about-how-to-talk-about-promises/) explains the terminology taking this term into account. In the executor implementation, we call the underlying asynchronous function.
+
+### `Promise` constructor
+
+The `Promise` constructor takes a single function as an argument - the _executor_.
+
+The executor function receives two parameters:
+
+- `resolve` - called if the underlying async function **succeeds**
+- `reject` - called if the underlying async function **fails**; also called if the executor **throws an error**
+
+A single param of any type can be passed to both `resolve` & `reject`.
