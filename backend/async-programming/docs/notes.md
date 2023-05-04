@@ -4,7 +4,7 @@
 
 ### Terminology
 
-## A promise can be in one of 3 states:
+### A promise can be in one of 3 states:
 
 - **pending**: the promise has been created, and the asynchronous function it's associated with has not succeeded or failed yet. This is the state your promise is in when it's returned from a call to fetch(), and the request is still being made
 - **fulfilled**: the asynchronous function has succeeded. When a promise is fulfilled, its then() handler is called
@@ -24,3 +24,13 @@ The executor function receives two parameters:
 - `reject` - called if the underlying async function **fails**; also called if the executor **throws an error**
 
 A single param of any type can be passed to both `resolve` & `reject`.
+
+## Workers
+
+Workers offer the possibility to run code in a different thread. Code running on the main thread & worked code can communicate through messages. Workers cannot access the DOM, `window`, page elements etc.
+
+There are 3 types of workers
+
+- dedicated (or web worker)
+- shared
+- service
